@@ -1,0 +1,3 @@
+<?php
+namespace App\Notifications;use App\Models\Conversation;use Illuminate\Bus\Queueable;use Illuminate\Notifications\Notification;
+class NewGuestMessageNotification extends Notification{use Queueable;public function __construct(public Conversation $conversation){}public function via(object $notifiable):array{return ['database'];}public function toArray(object $notifiable):array{return ['type'=>'guest_message','title'=>'Guest message','message'=>'A guest sent a message to reception.','conversation_id'=>$this->conversation->id,'room_id'=>$this->conversation->room_id,'hotel_id'=>$this->conversation->hotel_id];}}

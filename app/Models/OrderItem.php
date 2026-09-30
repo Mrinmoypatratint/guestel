@@ -1,0 +1,2 @@
+<?php
+namespace App\Models;use App\Models\Concerns\BelongsToTenant;use Illuminate\Database\Eloquent\Model;class OrderItem extends Model{use BelongsToTenant;protected $fillable=['hotel_id','order_id','menu_item_id','item_name','unit_price','quantity','line_total','modifier_snapshot','special_instructions'];protected function casts():array{return ['unit_price'=>'decimal:2','line_total'=>'decimal:2','modifier_snapshot'=>'array'];}}

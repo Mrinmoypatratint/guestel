@@ -1,0 +1,4 @@
+@import 'tailwindcss';
+@source '../views/**/*.blade.php';
+@source '../../app/**/*.php';
+:root{--brand:#172554;--accent:#C8A96A}body{font-family:Inter,ui-sans-serif,system-ui,sans-serif}.focus-ring:focus{outline:3px solid color-mix(in srgb,var(--accent) 65%,white);outline-offset:2px}

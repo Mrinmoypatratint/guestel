@@ -1,0 +1,3 @@
+<?php
+use Illuminate\Database\Migrations\Migration;use Illuminate\Database\Schema\Blueprint;use Illuminate\Support\Facades\Schema;
+return new class extends Migration{public function up():void{Schema::create('guests',function(Blueprint $t){$t->id();$t->foreignId('hotel_id')->constrained()->cascadeOnDelete();$t->foreignId('guest_session_id')->nullable()->constrained()->nullOnDelete();$t->string('first_name')->nullable();$t->string('last_name')->nullable();$t->string('email')->nullable()->index();$t->string('phone',40)->nullable();$t->boolean('marketing_consent')->default(false);$t->timestamp('consent_updated_at')->nullable();$t->timestamps();$t->index(['hotel_id','created_at']);});}public function down():void{Schema::dropIfExists('guests');}};

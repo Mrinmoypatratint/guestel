@@ -1,0 +1,3 @@
+<?php
+namespace App\Http\Controllers\Admin;use App\Actions\TransitionOrderAction;use App\Http\Controllers\Controller;use App\Models\Order;use Illuminate\Http\Request;
+class OrderController extends Controller{public function index(){return view('admin.orders.index',['orders'=>Order::with(['items','room'])->latest()->paginate(40)]);}public function update(Request $request,Order $order,TransitionOrderAction $action){$data=$request->validate(['status'=>['required','in:PENDING,ACCEPTED,PREPARING,READY,DELIVERED,CANCELLED,REJECTED'],'note'=>['nullable','string','max:1000']]);$action->execute($order,$data['status'],$request->user()->id,$data['note']??null);return back()->with('status','Order status updated.');}}

@@ -1,0 +1,3 @@
+<?php
+namespace App\Notifications;use App\Models\Order;use Illuminate\Bus\Queueable;use Illuminate\Notifications\Notification;
+class NewOrderNotification extends Notification{use Queueable;public function __construct(public Order $order){}public function via(object $notifiable):array{return ['database'];}public function toArray(object $notifiable):array{return ['type'=>'order','title'=>'New restaurant order','message'=>$this->order->order_number.' · '.$this->order->currency.' '.number_format((float)$this->order->total,2),'order_id'=>$this->order->id,'room_id'=>$this->order->room_id,'hotel_id'=>$this->order->hotel_id];}}

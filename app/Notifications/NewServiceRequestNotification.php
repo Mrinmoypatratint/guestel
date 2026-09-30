@@ -1,0 +1,3 @@
+<?php
+namespace App\Notifications;use App\Models\ServiceRequest;use Illuminate\Bus\Queueable;use Illuminate\Notifications\Notification;
+class NewServiceRequestNotification extends Notification{use Queueable;public function __construct(public ServiceRequest $request){}public function via(object $notifiable):array{return ['database'];}public function toArray(object $notifiable):array{return ['type'=>'service_request','title'=>'New service request','message'=>$this->request->request_number.' · '.$this->request->service?->name,'service_request_id'=>$this->request->id,'room_id'=>$this->request->room_id,'hotel_id'=>$this->request->hotel_id];}}
