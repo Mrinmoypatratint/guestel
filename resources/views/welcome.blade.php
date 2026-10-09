@@ -45,38 +45,31 @@
             <div class="flex items-center gap-3 sm:gap-4 relative">
                 
                 <!-- 3-Dot Navigation Menu Button -->
-                <div class="relative" @click.away="menuOpen = false" @keydown.escape.window="menuOpen = false">
-                    <button @click="menuOpen = !menuOpen" 
+                <div class="relative">
+                    <button id="navMenuBtn"
+                            onclick="toggleNavMenu()" 
                             type="button"
-                            class="px-3.5 py-2.5 rounded-2xl neu-button text-slate-700 hover:text-slate-950 flex items-center gap-2.5 font-bold text-xs transition duration-200"
-                            :class="{ 'neu-inset': menuOpen }"
+                            class="px-3.5 py-2.5 rounded-2xl neu-button text-slate-700 hover:text-slate-950 flex items-center gap-2.5 font-bold text-xs transition duration-200 cursor-pointer"
                             title="Open Navigation Menu"
                             aria-label="Navigation Menu">
                         <span class="hidden sm:inline font-bold text-xs text-slate-700">Explore</span>
                         <!-- Tactile 3-Dots (•••) -->
                         <div class="flex items-center gap-1">
-                            <span class="w-1.5 h-1.5 rounded-full bg-slate-600 transition-all" :class="{ 'scale-125 bg-blue-600': menuOpen }"></span>
-                            <span class="w-1.5 h-1.5 rounded-full bg-slate-600 transition-all" :class="{ 'scale-125 bg-blue-600': menuOpen }"></span>
-                            <span class="w-1.5 h-1.5 rounded-full bg-slate-600 transition-all" :class="{ 'scale-125 bg-blue-600': menuOpen }"></span>
+                            <span class="w-1.5 h-1.5 rounded-full bg-slate-600 transition-all"></span>
+                            <span class="w-1.5 h-1.5 rounded-full bg-slate-600 transition-all"></span>
+                            <span class="w-1.5 h-1.5 rounded-full bg-slate-600 transition-all"></span>
                         </div>
                     </button>
 
-                    <!-- Neumorphic Floating Dropdown Menu -->
-                    <div x-cloak 
-                         x-show="menuOpen" 
-                         x-transition:enter="transition ease-out duration-200"
-                         x-transition:enter-start="opacity-0 translate-y-2 scale-95"
-                         x-transition:enter-end="opacity-100 translate-y-0 scale-100"
-                         x-transition:leave="transition ease-in duration-150"
-                         x-transition:leave-start="opacity-100 translate-y-0 scale-100"
-                         x-transition:leave-end="opacity-0 translate-y-2 scale-95"
-                         class="absolute right-0 mt-3 w-72 sm:w-80 rounded-3xl neu-flat-lg p-5 z-50 border border-white/80 space-y-4 shadow-xl">
+                    <!-- Neumorphic Floating Dropdown Menu (Instant Opening) -->
+                    <div id="navDropdownMenu"
+                         class="hidden absolute right-0 mt-3 w-72 sm:w-80 rounded-3xl neu-flat-lg p-5 z-50 border border-white/80 space-y-4 shadow-xl transition-all duration-200">
                         
                         <!-- Quick Test Login Highlight Button -->
                         <div class="pb-3 border-b border-slate-300/80">
                             <p class="text-[10px] font-bold uppercase tracking-wider text-slate-600 mb-2">⚡ Instant Access</p>
                             <a href="#test-login" 
-                               @click="menuOpen = false" 
+                               onclick="closeNavMenu()" 
                                class="w-full py-3 px-4 rounded-xl neu-btn-blue text-white font-bold text-xs flex items-center justify-between group shadow-sm">
                                 <span class="flex items-center gap-2">
                                     <span class="w-2 h-2 rounded-full bg-white animate-pulse"></span>
@@ -91,42 +84,42 @@
                             <p class="text-[10px] font-bold uppercase tracking-wider text-slate-600 mb-2">Platform Modules</p>
                             
                             <a href="#platform" 
-                               @click="menuOpen = false"
+                               onclick="closeNavMenu()"
                                class="flex items-center gap-3 px-3 py-2.5 rounded-xl hover:bg-white/60 text-slate-700 hover:text-slate-900 text-xs font-semibold transition">
                                 <span class="w-6 h-6 rounded-lg neu-inset-sm flex items-center justify-center text-xs">🏢</span>
                                 <span>Explore Platform</span>
                             </a>
 
                             <a href="#guest-experience" 
-                               @click="menuOpen = false"
+                               onclick="closeNavMenu()"
                                class="flex items-center gap-3 px-3 py-2.5 rounded-xl hover:bg-white/60 text-slate-700 hover:text-slate-900 text-xs font-semibold transition">
                                 <span class="w-6 h-6 rounded-lg neu-inset-sm flex items-center justify-center text-xs">📱</span>
                                 <span>Guest QR Compendium</span>
                             </a>
 
                             <a href="#hotel-operations" 
-                               @click="menuOpen = false"
+                               onclick="closeNavMenu()"
                                class="flex items-center gap-3 px-3 py-2.5 rounded-xl hover:bg-white/60 text-slate-700 hover:text-slate-900 text-xs font-semibold transition">
                                 <span class="w-6 h-6 rounded-lg neu-inset-sm flex items-center justify-center text-xs">🛎️</span>
                                 <span>Hotel Operations Hub</span>
                             </a>
 
                             <a href="#restaurant" 
-                               @click="menuOpen = false"
+                               onclick="closeNavMenu()"
                                class="flex items-center gap-3 px-3 py-2.5 rounded-xl hover:bg-white/60 text-slate-700 hover:text-slate-900 text-xs font-semibold transition">
                                 <span class="w-6 h-6 rounded-lg neu-inset-sm flex items-center justify-center text-xs">🍳</span>
                                 <span>Kitchen & F&B KDS</span>
                             </a>
 
                             <a href="#housekeeping" 
-                               @click="menuOpen = false"
+                               onclick="closeNavMenu()"
                                class="flex items-center gap-3 px-3 py-2.5 rounded-xl hover:bg-white/60 text-slate-700 hover:text-slate-900 text-xs font-semibold transition">
                                 <span class="w-6 h-6 rounded-lg neu-inset-sm flex items-center justify-center text-xs">🧹</span>
                                 <span>Housekeeping Dispatch</span>
                             </a>
 
                             <a href="#security" 
-                               @click="menuOpen = false"
+                               onclick="closeNavMenu()"
                                class="flex items-center gap-3 px-3 py-2.5 rounded-xl hover:bg-white/60 text-slate-700 hover:text-slate-900 text-xs font-semibold transition">
                                 <span class="w-6 h-6 rounded-lg neu-inset-sm flex items-center justify-center text-xs">🔒</span>
                                 <span>Enterprise Security</span>
@@ -617,7 +610,36 @@
                 <a href="{{ route('login') }}" class="hover:text-slate-900">Sign In</a>
             </div>
         </div>
-    </footer>
-
+    <script>
+        function toggleNavMenu() {
+            const menu = document.getElementById('navDropdownMenu');
+            const btn = document.getElementById('navMenuBtn');
+            if (!menu) return;
+            const isHidden = menu.classList.contains('hidden');
+            if (isHidden) {
+                menu.classList.remove('hidden');
+                if (btn) btn.classList.add('neu-inset');
+            } else {
+                menu.classList.add('hidden');
+                if (btn) btn.classList.remove('neu-inset');
+            }
+        }
+        function closeNavMenu() {
+            const menu = document.getElementById('navDropdownMenu');
+            const btn = document.getElementById('navMenuBtn');
+            if (menu) menu.classList.add('hidden');
+            if (btn) btn.classList.remove('neu-inset');
+        }
+        document.addEventListener('click', function(e) {
+            const btn = document.getElementById('navMenuBtn');
+            const menu = document.getElementById('navDropdownMenu');
+            if (btn && menu && !btn.contains(e.target) && !menu.contains(e.target)) {
+                closeNavMenu();
+            }
+        });
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape') closeNavMenu();
+        });
+    </script>
 </body>
 </html>
