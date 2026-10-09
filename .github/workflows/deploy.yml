@@ -97,9 +97,6 @@ jobs:
           mkdir -p bootstrap/cache
           chmod -R 775 storage bootstrap/cache
 
-      - name: 📦 Install production Composer dependencies
-        run: composer install --no-dev --no-interaction --prefer-dist --optimize-autoloader
-
       - name: 📥 Download compiled build assets
         uses: actions/download-artifact@v4
         with:
@@ -117,6 +114,8 @@ jobs:
             **/.git*
             **/.git*/**
             **/node_modules/**
+            **/vendor/**
+            vendor/**
             **/tests/**
             .env*
             database/database.sqlite*
@@ -135,6 +134,8 @@ jobs:
             **/.git*
             index.php
             .htaccess
+            storage/**
+            hot
 
       - name: 🩺 Verify Production Health Probe
         run: |
