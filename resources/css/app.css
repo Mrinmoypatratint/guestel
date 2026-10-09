@@ -6,16 +6,44 @@
   --neu-bg: #e8edf5;
   --neu-dark: #cad3df;
   --neu-light: #ffffff;
+  --brand-navy: #00214D;
+  --brand-blue: #0073E6;
+  --brand-gold: #F6B323;
   --neu-text-main: #1e293b;
   --neu-text-muted: #64748b;
-  --neu-accent: #2563eb;
-  --brand: #1e293b;
+  --neu-accent: #0073E6;
+  --brand: #00214D;
 }
 
 body {
   font-family: 'Plus Jakarta Sans', Inter, ui-sans-serif, system-ui, sans-serif;
   background-color: #e8edf5;
   color: #1e293b;
+}
+
+/* Guestel Brand Exact Typography & Colors */
+.text-guestel-navy {
+  color: #00214D !important;
+}
+
+.text-guestel-blue {
+  color: #0073E6 !important;
+}
+
+.text-guestel-gold {
+  color: #F6B323 !important;
+}
+
+.bg-guestel-navy {
+  background-color: #00214D !important;
+}
+
+.bg-guestel-blue {
+  background-color: #0073E6 !important;
+}
+
+.bg-guestel-gold {
+  background-color: #F6B323 !important;
 }
 
 /* Neumorphic Core Utility Classes */
@@ -74,49 +102,40 @@ body {
   transform: translateY(2px);
 }
 
-/* Primary Button (Dark Slate Accent) */
-.neu-btn-primary {
-  background: #1e293b;
-  color: #f8fafc;
+/* Primary Button (Brand Navy) */
+.neu-btn-primary,
+.neu-btn-guestel {
+  background: #00214D;
+  color: #ffffff;
   box-shadow: 5px 5px 14px #cad3df, -5px -5px 14px #ffffff;
   transition: all 0.18s ease-in-out;
 }
 
-.neu-btn-primary:hover {
-  background: #0f172a;
+.neu-btn-primary:hover,
+.neu-btn-guestel:hover {
+  background: #001736;
   box-shadow: 2px 2px 8px #cad3df, -2px -2px 8px #ffffff;
   transform: translateY(1px);
 }
 
-.neu-btn-primary:active {
+.neu-btn-primary:active,
+.neu-btn-guestel:active {
   box-shadow: inset 2px 2px 6px rgba(0, 0, 0, 0.4), inset -2px -2px 6px rgba(255, 255, 255, 0.1);
   transform: translateY(2px);
 }
 
-/* Blue Accent Button */
-.neu-btn-blue {
-  background: #2563eb;
+/* Vibrant Blue Button */
+.neu-btn-blue,
+.neu-btn-guestel-blue {
+  background: #0073E6;
   color: #ffffff;
   box-shadow: 5px 5px 14px #cad3df, -5px -5px 14px #ffffff;
   transition: all 0.18s ease-in-out;
 }
 
-.neu-btn-blue:hover {
-  background: #1d4ed8;
-  box-shadow: 2px 2px 8px #cad3df, -2px -2px 8px #ffffff;
-  transform: translateY(1px);
-}
-
-/* Amber Accent Button */
-.neu-btn-amber {
-  background: #d97706;
-  color: #ffffff;
-  box-shadow: 5px 5px 14px #cad3df, -5px -5px 14px #ffffff;
-  transition: all 0.18s ease-in-out;
-}
-
-.neu-btn-amber:hover {
-  background: #b45309;
+.neu-btn-blue:hover,
+.neu-btn-guestel-blue:hover {
+  background: #005bb5;
   box-shadow: 2px 2px 8px #cad3df, -2px -2px 8px #ffffff;
   transform: translateY(1px);
 }
@@ -132,7 +151,7 @@ body {
 
 .neu-input:focus {
   outline: none;
-  box-shadow: inset 4px 4px 8px #cad3df, inset -4px -4px 8px #ffffff, 0 0 0 2px #3b82f6;
+  box-shadow: inset 4px 4px 8px #cad3df, inset -4px -4px 8px #ffffff, 0 0 0 2px #0073E6;
 }
 
 /* Pill Badges */

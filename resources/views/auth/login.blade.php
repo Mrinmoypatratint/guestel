@@ -6,6 +6,10 @@
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <title>Sign In · Guestel Operational Workspace</title>
 
+    <link rel="icon" type="image/png" href="{{ asset('favicon.png') }}">
+    <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}">
+    <link rel="apple-touch-icon" href="{{ asset('images/guestel-icon.png') }}">
+
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
@@ -51,12 +55,12 @@
     <!-- Main Neumorphic Container -->
     <div class="neu-flat-lg rounded-3xl p-6 sm:p-10 space-y-8">
         
-        <!-- Header -->
-        <div class="text-center space-y-2 max-w-lg mx-auto">
-            <div class="inline-flex h-12 w-12 items-center justify-center rounded-2xl neu-button text-slate-900 font-extrabold text-2xl mx-auto mb-1">
-                G
-            </div>
-            <h1 class="text-2xl sm:text-3xl font-extrabold text-slate-900 tracking-tight">Sign In to Guestel</h1>
+        <!-- Brand Header -->
+        <div class="text-center space-y-3 max-w-lg mx-auto flex flex-col items-center">
+            <x-brand-logo size="xl" tagline="Hospitality Cloud OS" :href="route('landing')" />
+            <h1 class="text-2xl sm:text-3xl font-extrabold text-slate-900 tracking-tight">
+                Sign In to <span class="text-[#00214D]">Gues</span><span class="text-[#0073E6]">tel</span>
+            </h1>
             <p class="text-xs sm:text-sm text-slate-600">
                 Choose a 1-click test login persona or enter your credentials below.
             </p>
@@ -201,8 +205,13 @@
     </div>
 
     <!-- Footer info -->
-    <div class="text-center text-xs text-slate-500">
-        &copy; {{ date('Y') }} Guestel · Talisha Software. All rights reserved.
+    <div class="text-center text-xs text-slate-500 flex flex-col items-center gap-1.5">
+        <div class="flex items-center gap-2">
+            <span>&copy; {{ date('Y') }}</span>
+            <x-brand-logo size="xs" :tagline="null" :href="route('landing')" />
+            <span>· Talisha Software</span>
+        </div>
+        <span class="text-[11px] text-slate-400">All rights reserved.</span>
     </div>
 
 </div>

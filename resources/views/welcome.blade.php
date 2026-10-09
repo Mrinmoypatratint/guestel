@@ -18,6 +18,10 @@
     <meta property="og:description" content="From guest requests and housekeeping to dining, payments, staff operations and hotel intelligence — connected in one tactile workspace.">
     <meta property="og:image" content="{{ asset('storage/hotels/1/hero_cover.jpg') }}">
 
+    <link rel="icon" type="image/png" href="{{ asset('favicon.png') }}">
+    <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}">
+    <link rel="apple-touch-icon" href="{{ asset('images/guestel-icon.png') }}">
+
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
@@ -28,21 +32,13 @@
         [x-cloak] { display: none !important; }
     </style>
 </head>
-<body class="min-h-full bg-[#e8edf5] text-slate-800 antialiased selection:bg-slate-800 selection:text-white" x-data="{ mobileMenuOpen: false }">
+<body class="min-h-full bg-[#e8edf5] text-slate-800 antialiased selection:bg-[#00214D] selection:text-white" x-data="{ mobileMenuOpen: false }">
 
     <!-- Top Neumorphic Navigation Bar -->
     <header class="fixed top-0 inset-x-0 z-50 bg-[#e8edf5]/90 backdrop-blur-md border-b border-white/60 shadow-[0_4px_16px_rgba(202,211,223,0.4)] transition-all duration-300">
         <div class="max-w-7xl mx-auto px-6 sm:px-8 h-20 flex items-center justify-between">
             <!-- Brand Logo -->
-            <a href="{{ route('landing') }}" class="flex items-center gap-3 group">
-                <div class="flex h-11 w-11 items-center justify-center rounded-2xl neu-button text-slate-800 font-extrabold text-xl group-hover:scale-105 transition">
-                    G
-                </div>
-                <div class="leading-none">
-                    <span class="block text-base font-extrabold tracking-tight text-slate-900">Guestel</span>
-                    <span class="text-[10px] font-mono uppercase tracking-widest text-slate-500 font-semibold">Hospitality Cloud OS</span>
-                </div>
-            </a>
+            <x-brand-logo size="md" />
 
             <!-- Desktop Nav Links -->
             <nav class="hidden lg:flex items-center gap-8 text-sm font-semibold text-slate-600">
@@ -556,16 +552,13 @@
     <footer class="border-t border-slate-300 py-12 text-xs text-slate-600">
         <div class="max-w-7xl mx-auto px-6 sm:px-8 flex flex-col sm:flex-row items-center justify-between gap-4">
             <div class="flex items-center gap-3">
-                <div class="flex h-8 w-8 items-center justify-center rounded-xl neu-button text-slate-800 font-extrabold text-sm">
-                    G
-                </div>
-                <span class="font-bold text-slate-800">Guestel · Talisha Software</span>
+                <x-brand-logo size="sm" tagline="Talisha Software" />
             </div>
             <p class="text-slate-500">
-                &copy; {{ date('Y') }} Guestel Hospitality Platform. All rights reserved.
+                &copy; {{ date('Y') }} <span class="font-bold"><span class="text-[#00214D]">Gues</span><span class="text-[#0073E6]">tel</span></span> Hospitality Platform. All rights reserved.
             </p>
             <div class="flex items-center gap-4">
-                <a href="#test-login" class="text-blue-600 font-bold hover:underline">1-Click Test Login</a>
+                <a href="#test-login" class="text-[#0073E6] font-bold hover:underline">1-Click Test Login</a>
                 <a href="{{ route('login') }}" class="hover:text-slate-900">Sign In</a>
             </div>
         </div>

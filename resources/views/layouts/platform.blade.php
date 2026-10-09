@@ -6,6 +6,10 @@
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <title>{{ $title ?? 'SaaS Company Master Hub' }} · Hotel Guest Platform Provider</title>
 
+    <link rel="icon" type="image/png" href="{{ asset('favicon.png') }}">
+    <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}">
+    <link rel="apple-touch-icon" href="{{ asset('images/guestel-icon.png') }}">
+
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
@@ -22,17 +26,10 @@
     <!-- Super Admin SaaS Sidebar -->
     <aside class="w-full lg:w-72 flex-shrink-0 border-r border-slate-800/80 bg-slate-900/90 backdrop-blur-xl flex flex-col justify-between">
         <div>
-            <!-- SaaS Brand Header -->
+            <!-- Guestel Brand Header -->
             <div class="flex h-20 items-center justify-between border-b border-slate-800/80 px-6">
-                <div class="flex items-center gap-3">
-                    <div class="flex h-11 w-11 items-center justify-center rounded-2xl bg-gradient-to-br from-amber-400 via-amber-600 to-amber-800 text-slate-950 font-black text-xl shadow-lg shadow-amber-950/50">
-                        S
-                    </div>
-                    <div>
-                        <p class="font-bold text-sm tracking-tight text-white">SaaS Master Engine</p>
-                        <span class="rounded bg-amber-500/10 px-1.5 py-0.5 text-[10px] font-mono text-amber-400 border border-amber-500/20">Company Platform Admin</span>
-                    </div>
-                </div>
+                <x-brand-logo size="md" tagline="SaaS Platform Admin" theme="dark" :href="route('platform.dashboard')" />
+                <span class="rounded bg-amber-500/10 px-2 py-0.5 text-[10px] font-mono text-amber-400 border border-amber-500/20">Super Admin</span>
             </div>
 
             <!-- SaaS Navigation Links -->

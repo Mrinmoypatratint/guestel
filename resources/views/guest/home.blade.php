@@ -6,6 +6,10 @@
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <title>{{ $hotel->name }} · Guest Concierge</title>
 
+    <link rel="icon" type="image/png" href="{{ asset('favicon.png') }}">
+    <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}">
+    <link rel="apple-touch-icon" href="{{ asset('images/guestel-icon.png') }}">
+
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;600;700&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
@@ -416,7 +420,11 @@
     </section>
 
     <!-- Footer Security & Privacy Badge -->
-    <footer class="pt-6 pb-12 text-center text-[10px] text-slate-400 space-y-1">
+    <footer class="pt-6 pb-12 text-center text-[10px] text-slate-400 space-y-2 flex flex-col items-center">
+        <div class="flex items-center justify-center gap-2">
+            <span class="text-[10px] text-slate-400 font-medium">Powered by</span>
+            <x-brand-logo size="xs" :tagline="null" :href="route('landing')" />
+        </div>
         <p class="font-medium text-slate-500">{{ $hotel->name }} · Digital Guest Experience Engine</p>
         <p>Private & secure connection · No personal profiling or third-party cookies.</p>
     </footer>

@@ -6,6 +6,10 @@
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <title>{{ $title ?? ($currentHotel->name ?? config('app.name')) }} · Operations Command</title>
     
+    <link rel="icon" type="image/png" href="{{ asset('favicon.png') }}">
+    <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}">
+    <link rel="apple-touch-icon" href="{{ asset('images/guestel-icon.png') }}">
+
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
@@ -100,18 +104,23 @@
 <div class="flex min-h-screen">
     <!-- Desktop Sidebar -->
     <aside class="hidden w-72 flex-col border-r border-slate-800/80 bg-slate-900/90 backdrop-blur-xl lg:flex">
-        <!-- Brand / Property Badge -->
-        <div class="flex h-20 items-center justify-between border-b border-slate-800/80 px-6">
-            <div class="flex items-center gap-3">
-                <div class="flex h-11 w-11 items-center justify-center rounded-2xl bg-gradient-to-br from-amber-400 via-amber-600 to-amber-800 shadow-lg shadow-amber-950/40 text-slate-950 font-bold text-lg">
+        <!-- Guestel Brand Header -->
+        <div class="px-6 py-3.5 border-b border-slate-800/80 bg-slate-950/70 flex items-center justify-between">
+            <x-brand-logo size="sm" tagline="Operations Cloud" theme="dark" :href="route('admin.dashboard')" />
+            <span class="rounded bg-emerald-500/10 px-2 py-0.5 text-[10px] font-mono text-emerald-400 border border-emerald-500/20 flex items-center gap-1">
+                <span class="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse"></span> Live
+            </span>
+        </div>
+
+        <!-- Property Badge -->
+        <div class="flex items-center justify-between border-b border-slate-800/80 px-6 py-3 bg-slate-900/60">
+            <div class="flex items-center gap-3 min-w-0">
+                <div class="flex h-9 w-9 flex-shrink-0 items-center justify-center rounded-xl bg-gradient-to-br from-amber-400 via-amber-600 to-amber-800 shadow-md text-slate-950 font-bold text-sm">
                     {{ strtoupper(substr($currentHotel->name ?? 'H', 0, 1)) }}
                 </div>
                 <div class="min-w-0">
-                    <p class="truncate font-semibold tracking-tight text-white text-sm">{{ $currentHotel->name ?? config('app.name') }}</p>
-                    <div class="flex items-center gap-1.5 text-xs text-amber-400/90 font-medium">
-                        <span class="inline-block h-1.5 w-1.5 rounded-full bg-emerald-400 animate-pulse"></span>
-                        Operations Live
-                    </div>
+                    <p class="truncate font-semibold tracking-tight text-white text-xs">{{ $currentHotel->name ?? config('app.name') }}</p>
+                    <p class="truncate text-[10px] text-slate-400">{{ $currentHotel->city ?? 'Active Property' }}</p>
                 </div>
             </div>
             @if($userHotels->count() > 1)

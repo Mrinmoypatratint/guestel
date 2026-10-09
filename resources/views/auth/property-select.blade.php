@@ -4,7 +4,11 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="csrf-token" content="{{ csrf_token() }}">
-    <title>Where are you working today? · Hotel Guest Platform</title>
+    <title>Where are you working today? · Guestel Operations</title>
+
+    <link rel="icon" type="image/png" href="{{ asset('favicon.png') }}">
+    <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}">
+    <link rel="apple-touch-icon" href="{{ asset('images/guestel-icon.png') }}">
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -32,15 +36,7 @@
 <div class="min-h-full flex flex-col justify-between py-12 px-6 sm:px-12 max-w-5xl mx-auto">
     <!-- Top Header -->
     <div class="flex items-center justify-between border-b border-slate-800/80 pb-6">
-        <div class="flex items-center gap-3">
-            <div class="flex h-10 w-10 items-center justify-center rounded-2xl gold-gradient text-slate-950 font-black text-lg shadow-lg shadow-amber-950/40">
-                H
-            </div>
-            <div>
-                <span class="block text-sm font-bold text-white leading-none">Hotel Guest Platform</span>
-                <span class="text-[10px] font-mono text-amber-400">Workspace Selection</span>
-            </div>
-        </div>
+        <x-brand-logo size="md" tagline="Multi-Property Hub" theme="dark" />
 
         <div class="flex items-center gap-4 text-xs">
             <div class="text-right hidden sm:block">
@@ -134,8 +130,10 @@
     </div>
 
     <!-- Footer Note -->
-    <div class="text-center text-[11px] text-slate-400 border-t border-slate-800/80 pt-6">
-        Every workspace switch is strictly validated server-side by multi-tenant RBAC policies.
+    <div class="text-center text-[11px] text-slate-400 border-t border-slate-800/80 pt-6 flex flex-col sm:flex-row items-center justify-between gap-3">
+        <x-brand-logo size="xs" :tagline="null" theme="dark" />
+        <span>Every workspace switch is strictly validated server-side by multi-tenant RBAC policies.</span>
+        <span>&copy; {{ date('Y') }} Guestel</span>
     </div>
 </div>
 
