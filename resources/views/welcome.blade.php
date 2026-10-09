@@ -32,64 +32,119 @@
         [x-cloak] { display: none !important; }
     </style>
 </head>
-<body class="min-h-full bg-[#e8edf5] text-slate-800 antialiased selection:bg-[#00214D] selection:text-white" x-data="{ mobileMenuOpen: false }">
+<body class="min-h-full bg-[#e8edf5] text-slate-800 antialiased selection:bg-[#00214D] selection:text-white">
 
     <!-- Top Neumorphic Navigation Bar -->
-    <header class="fixed top-0 inset-x-0 z-50 bg-[#e8edf5]/90 backdrop-blur-md border-b border-white/60 shadow-[0_4px_16px_rgba(202,211,223,0.4)] transition-all duration-300">
+    <header class="fixed top-0 inset-x-0 z-50 bg-[#e8edf5]/95 backdrop-blur-md border-b border-white/60 shadow-[0_4px_16px_rgba(202,211,223,0.45)] transition-all duration-300"
+            x-data="{ menuOpen: false }">
         <div class="max-w-7xl mx-auto px-6 sm:px-8 h-20 flex items-center justify-between">
             <!-- Brand Logo -->
             <x-brand-logo size="md" />
 
-            <!-- Desktop Nav Links -->
-            <nav class="hidden lg:flex items-center gap-8 text-sm font-semibold text-slate-600">
-                <a href="#test-login" class="text-blue-600 hover:text-blue-700 font-bold transition flex items-center gap-1.5">
-                    <span class="inline-block w-2 h-2 rounded-full bg-blue-600 animate-pulse"></span>
-                    <span>Test Login</span>
-                </a>
-                <a href="#platform" class="hover:text-slate-900 transition">Platform</a>
-                <a href="#guest-experience" class="hover:text-slate-900 transition">Guest QR</a>
-                <a href="#hotel-operations" class="hover:text-slate-900 transition">Operations</a>
-                <a href="#restaurant" class="hover:text-slate-900 transition">Kitchen KDS</a>
-                <a href="#housekeeping" class="hover:text-slate-900 transition">Housekeeping</a>
-                <a href="#security" class="hover:text-slate-900 transition">Security</a>
-            </nav>
+            <!-- Clean Header Actions: 3-Dot Navigation Menu + Sign In -->
+            <div class="flex items-center gap-3 sm:gap-4 relative">
+                
+                <!-- 3-Dot Navigation Menu Button -->
+                <div class="relative" @click.away="menuOpen = false" @keydown.escape.window="menuOpen = false">
+                    <button @click="menuOpen = !menuOpen" 
+                            type="button"
+                            class="px-3.5 py-2.5 rounded-2xl neu-button text-slate-700 hover:text-slate-950 flex items-center gap-2.5 font-bold text-xs transition duration-200"
+                            :class="{ 'neu-inset': menuOpen }"
+                            title="Open Navigation Menu"
+                            aria-label="Navigation Menu">
+                        <span class="hidden sm:inline font-bold text-xs text-slate-700">Explore</span>
+                        <!-- Tactile 3-Dots (•••) -->
+                        <div class="flex items-center gap-1">
+                            <span class="w-1.5 h-1.5 rounded-full bg-slate-600 transition-all" :class="{ 'scale-125 bg-blue-600': menuOpen }"></span>
+                            <span class="w-1.5 h-1.5 rounded-full bg-slate-600 transition-all" :class="{ 'scale-125 bg-blue-600': menuOpen }"></span>
+                            <span class="w-1.5 h-1.5 rounded-full bg-slate-600 transition-all" :class="{ 'scale-125 bg-blue-600': menuOpen }"></span>
+                        </div>
+                    </button>
 
-            <!-- Action CTAs -->
-            <div class="hidden sm:flex items-center gap-4">
-                <a href="#test-login" class="px-5 py-2.5 text-xs font-bold text-white neu-btn-blue rounded-xl flex items-center gap-2">
-                    <span>⚡ Quick Test Login</span>
-                </a>
-                <a href="#platform" class="px-4 py-2 text-xs font-semibold text-slate-700 hover:text-slate-900 transition">
-                    Explore Platform
-                </a>
+                    <!-- Neumorphic Floating Dropdown Menu -->
+                    <div x-cloak 
+                         x-show="menuOpen" 
+                         x-transition:enter="transition ease-out duration-200"
+                         x-transition:enter-start="opacity-0 translate-y-2 scale-95"
+                         x-transition:enter-end="opacity-100 translate-y-0 scale-100"
+                         x-transition:leave="transition ease-in duration-150"
+                         x-transition:leave-start="opacity-100 translate-y-0 scale-100"
+                         x-transition:leave-end="opacity-0 translate-y-2 scale-95"
+                         class="absolute right-0 mt-3 w-72 sm:w-80 rounded-3xl neu-flat-lg p-5 z-50 border border-white/80 space-y-4 shadow-xl">
+                        
+                        <!-- Quick Test Login Highlight Button -->
+                        <div class="pb-3 border-b border-slate-300/80">
+                            <p class="text-[10px] font-bold uppercase tracking-wider text-slate-600 mb-2">⚡ Instant Access</p>
+                            <a href="#test-login" 
+                               @click="menuOpen = false" 
+                               class="w-full py-3 px-4 rounded-xl neu-btn-blue text-white font-bold text-xs flex items-center justify-between group shadow-sm">
+                                <span class="flex items-center gap-2">
+                                    <span class="w-2 h-2 rounded-full bg-white animate-pulse"></span>
+                                    <span>Quick Test Login</span>
+                                </span>
+                                <span class="text-xs group-hover:translate-x-1 transition-transform">→</span>
+                            </a>
+                        </div>
+
+                        <!-- Navigation Links Grid / List -->
+                        <div class="space-y-1">
+                            <p class="text-[10px] font-bold uppercase tracking-wider text-slate-600 mb-2">Platform Modules</p>
+                            
+                            <a href="#platform" 
+                               @click="menuOpen = false"
+                               class="flex items-center gap-3 px-3 py-2.5 rounded-xl hover:bg-white/60 text-slate-700 hover:text-slate-900 text-xs font-semibold transition">
+                                <span class="w-6 h-6 rounded-lg neu-inset-sm flex items-center justify-center text-xs">🏢</span>
+                                <span>Explore Platform</span>
+                            </a>
+
+                            <a href="#guest-experience" 
+                               @click="menuOpen = false"
+                               class="flex items-center gap-3 px-3 py-2.5 rounded-xl hover:bg-white/60 text-slate-700 hover:text-slate-900 text-xs font-semibold transition">
+                                <span class="w-6 h-6 rounded-lg neu-inset-sm flex items-center justify-center text-xs">📱</span>
+                                <span>Guest QR Compendium</span>
+                            </a>
+
+                            <a href="#hotel-operations" 
+                               @click="menuOpen = false"
+                               class="flex items-center gap-3 px-3 py-2.5 rounded-xl hover:bg-white/60 text-slate-700 hover:text-slate-900 text-xs font-semibold transition">
+                                <span class="w-6 h-6 rounded-lg neu-inset-sm flex items-center justify-center text-xs">🛎️</span>
+                                <span>Hotel Operations Hub</span>
+                            </a>
+
+                            <a href="#restaurant" 
+                               @click="menuOpen = false"
+                               class="flex items-center gap-3 px-3 py-2.5 rounded-xl hover:bg-white/60 text-slate-700 hover:text-slate-900 text-xs font-semibold transition">
+                                <span class="w-6 h-6 rounded-lg neu-inset-sm flex items-center justify-center text-xs">🍳</span>
+                                <span>Kitchen & F&B KDS</span>
+                            </a>
+
+                            <a href="#housekeeping" 
+                               @click="menuOpen = false"
+                               class="flex items-center gap-3 px-3 py-2.5 rounded-xl hover:bg-white/60 text-slate-700 hover:text-slate-900 text-xs font-semibold transition">
+                                <span class="w-6 h-6 rounded-lg neu-inset-sm flex items-center justify-center text-xs">🧹</span>
+                                <span>Housekeeping Dispatch</span>
+                            </a>
+
+                            <a href="#security" 
+                               @click="menuOpen = false"
+                               class="flex items-center gap-3 px-3 py-2.5 rounded-xl hover:bg-white/60 text-slate-700 hover:text-slate-900 text-xs font-semibold transition">
+                                <span class="w-6 h-6 rounded-lg neu-inset-sm flex items-center justify-center text-xs">🔒</span>
+                                <span>Enterprise Security</span>
+                            </a>
+                        </div>
+
+                        <!-- Footer Links -->
+                        <div class="pt-3 border-t border-slate-300/80 flex items-center justify-between text-[11px] text-slate-500 font-medium">
+                            <span>Talisha Software</span>
+                            <span class="text-blue-600 font-bold">Cloud OS</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Sign In Button -->
                 <a href="{{ route('login') }}" class="px-5 py-2.5 text-xs font-bold text-slate-800 neu-button rounded-xl transition">
                     Sign In
                 </a>
-            </div>
-
-            <!-- Mobile Hamburger -->
-            <button @click="mobileMenuOpen = !mobileMenuOpen" class="sm:hidden p-2 rounded-xl neu-button text-slate-700 hover:text-slate-900 transition">
-                <svg class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                    <path x-show="!mobileMenuOpen" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"/>
-                    <path x-show="mobileMenuOpen" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/>
-                </svg>
-            </button>
-        </div>
-
-        <!-- Mobile Navigation Menu -->
-        <div x-cloak x-show="mobileMenuOpen" class="sm:hidden border-b border-white/60 bg-[#e8edf5] px-6 py-6 space-y-4 shadow-lg">
-            <div class="flex flex-col gap-3 text-sm font-semibold">
-                <a @click="mobileMenuOpen = false" href="#test-login" class="text-blue-600 flex items-center gap-2">⚡ 1-Click Test Login</a>
-                <a @click="mobileMenuOpen = false" href="#platform" class="text-slate-700 hover:text-slate-900">Platform Overview</a>
-                <a @click="mobileMenuOpen = false" href="#guest-experience" class="text-slate-700 hover:text-slate-900">Guest Experience</a>
-                <a @click="mobileMenuOpen = false" href="#hotel-operations" class="text-slate-700 hover:text-slate-900">Hotel Operations</a>
-                <a @click="mobileMenuOpen = false" href="#restaurant" class="text-slate-700 hover:text-slate-900">Kitchen & F&B</a>
-                <a @click="mobileMenuOpen = false" href="#housekeeping" class="text-slate-700 hover:text-slate-900">Housekeeping</a>
-                <a @click="mobileMenuOpen = false" href="#security" class="text-slate-700 hover:text-slate-900">Security</a>
-            </div>
-            <div class="pt-4 border-t border-slate-300 flex flex-col gap-3">
-                <a href="#test-login" @click="mobileMenuOpen = false" class="w-full text-center py-3 text-xs font-bold text-white neu-btn-blue rounded-xl">⚡ Quick Test Login</a>
-                <a href="{{ route('login') }}" class="w-full text-center py-3 text-xs font-bold text-slate-800 neu-button rounded-xl">Sign In</a>
             </div>
         </div>
     </header>
