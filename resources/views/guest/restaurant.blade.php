@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="en" class="h-full bg-[#0a0f1d]">
+<html lang="en" class="h-full bg-[#e8edf5]">
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0">

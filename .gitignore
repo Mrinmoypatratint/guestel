@@ -5,9 +5,17 @@
 /public/storage
 /storage/*.key
 /storage/framework/cache/*
+!/storage/framework/cache/.gitkeep
+/storage/framework/cache/data/*
+!/storage/framework/cache/data/.gitkeep
 /storage/framework/sessions/*
+!/storage/framework/sessions/.gitkeep
 /storage/framework/views/*
+!/storage/framework/views/.gitkeep
 /storage/logs/*
+!/storage/logs/.gitkeep
+/bootstrap/cache/*
+!/bootstrap/cache/.gitkeep
 /vendor
 .env
 .env.backup
@@ -21,4 +29,3 @@ database/*.sqlite-wal
 composer.phar
 .idea
 .vscode
-

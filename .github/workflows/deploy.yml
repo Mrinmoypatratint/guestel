@@ -26,6 +26,16 @@ jobs:
           extensions: mbstring, xml, ctype, iconv, intl, pdo_sqlite, sqlite3, curl, fileinfo, zip, gd
           coverage: none
 
+      - name: 📁 Setup environment and storage directories
+        run: |
+          cp .env.example .env
+          mkdir -p storage/framework/cache/data
+          mkdir -p storage/framework/sessions
+          mkdir -p storage/framework/views
+          mkdir -p storage/logs
+          mkdir -p bootstrap/cache
+          chmod -R 775 storage bootstrap/cache
+
       - name: 📦 Install Composer dependencies
         run: composer install --no-interaction --prefer-dist --optimize-autoloader
 
@@ -43,7 +53,6 @@ jobs:
 
       - name: 🧪 Run Automated Tests
         run: |
-          cp .env.example .env
           php artisan key:generate
           touch database/database.sqlite
           php artisan migrate --force
@@ -72,6 +81,16 @@ jobs:
           php-version: '8.4'
           extensions: mbstring, xml, ctype, iconv, intl, pdo_sqlite, sqlite3, curl, fileinfo, zip, gd
           coverage: none
+
+      - name: 📁 Setup environment and storage directories
+        run: |
+          cp .env.example .env
+          mkdir -p storage/framework/cache/data
+          mkdir -p storage/framework/sessions
+          mkdir -p storage/framework/views
+          mkdir -p storage/logs
+          mkdir -p bootstrap/cache
+          chmod -R 775 storage bootstrap/cache
 
       - name: 📦 Install production Composer dependencies
         run: composer install --no-dev --no-interaction --prefer-dist --optimize-autoloader

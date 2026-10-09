@@ -17,8 +17,8 @@
 
 body {
   font-family: 'Plus Jakarta Sans', Inter, ui-sans-serif, system-ui, sans-serif;
-  background-color: #e8edf5;
-  color: #1e293b;
+  background-color: #e8edf5 !important;
+  color: #1e293b !important;
 }
 
 /* Guestel Brand Exact Typography & Colors */
@@ -53,115 +53,208 @@ body {
 
 /* Elevated Flat Surface (Cards & Panels) */
 .neu-flat {
-  background: #e8edf5;
-  box-shadow: 8px 8px 18px #cad3df, -8px -8px 18px #ffffff;
-  border: 1px solid rgba(255, 255, 255, 0.6);
+  background: #e8edf5 !important;
+  box-shadow: 8px 8px 18px #cad3df, -8px -8px 18px #ffffff !important;
+  border: 1px solid rgba(255, 255, 255, 0.7) !important;
 }
 
 .neu-flat-sm {
-  background: #e8edf5;
-  box-shadow: 4px 4px 10px #cad3df, -4px -4px 10px #ffffff;
-  border: 1px solid rgba(255, 255, 255, 0.7);
+  background: #e8edf5 !important;
+  box-shadow: 4px 4px 10px #cad3df, -4px -4px 10px #ffffff !important;
+  border: 1px solid rgba(255, 255, 255, 0.7) !important;
 }
 
 .neu-flat-lg {
-  background: #e8edf5;
-  box-shadow: 12px 12px 28px #cad3df, -12px -12px 28px #ffffff;
-  border: 1px solid rgba(255, 255, 255, 0.75);
+  background: #e8edf5 !important;
+  box-shadow: 12px 12px 28px #cad3df, -12px -12px 28px #ffffff !important;
+  border: 1px solid rgba(255, 255, 255, 0.8) !important;
 }
 
-/* Inset / Pressed Surface (Inputs, pressed buttons, active tabs) */
+/* Inset / Pressed Surface (Inputs, pressed buttons, active tabs, table wells) */
 .neu-inset,
 .neu-pressed {
-  background: #e8edf5;
-  box-shadow: inset 4px 4px 8px #cad3df, inset -4px -4px 8px #ffffff;
-  border: 1px solid rgba(203, 213, 225, 0.35);
+  background: #e8edf5 !important;
+  box-shadow: inset 4px 4px 8px #cad3df, inset -4px -4px 8px #ffffff !important;
+  border: 1px solid rgba(203, 213, 225, 0.4) !important;
 }
 
 .neu-inset-sm {
-  background: #e8edf5;
-  box-shadow: inset 2px 2px 5px #cad3df, inset -2px -2px 5px #ffffff;
+  background: #e8edf5 !important;
+  box-shadow: inset 2px 2px 5px #cad3df, inset -2px -2px 5px #ffffff !important;
 }
 
 /* Neumorphic Interactive Button */
 .neu-button {
-  background: #e8edf5;
-  box-shadow: 5px 5px 12px #cad3df, -5px -5px 12px #ffffff;
-  border: 1px solid rgba(255, 255, 255, 0.7);
+  background: #e8edf5 !important;
+  box-shadow: 5px 5px 12px #cad3df, -5px -5px 12px #ffffff !important;
+  border: 1px solid rgba(255, 255, 255, 0.7) !important;
   transition: all 0.18s ease-in-out;
 }
 
 .neu-button:hover {
-  box-shadow: 2px 2px 6px #cad3df, -2px -2px 6px #ffffff;
+  box-shadow: 2px 2px 6px #cad3df, -2px -2px 6px #ffffff !important;
   transform: translateY(1px);
 }
 
 .neu-button:active,
 .neu-button.active {
-  box-shadow: inset 3px 3px 6px #cad3df, inset -3px -3px 6px #ffffff;
+  box-shadow: inset 3px 3px 6px #cad3df, inset -3px -3px 6px #ffffff !important;
   transform: translateY(2px);
 }
 
 /* Primary Button (Brand Navy) */
 .neu-btn-primary,
 .neu-btn-guestel {
-  background: #00214D;
-  color: #ffffff;
-  box-shadow: 5px 5px 14px #cad3df, -5px -5px 14px #ffffff;
+  background: #00214D !important;
+  color: #ffffff !important;
+  box-shadow: 5px 5px 14px #cad3df, -5px -5px 14px #ffffff !important;
   transition: all 0.18s ease-in-out;
 }
 
 .neu-btn-primary:hover,
 .neu-btn-guestel:hover {
-  background: #001736;
-  box-shadow: 2px 2px 8px #cad3df, -2px -2px 8px #ffffff;
+  background: #001736 !important;
+  box-shadow: 2px 2px 8px #cad3df, -2px -2px 8px #ffffff !important;
   transform: translateY(1px);
 }
 
 .neu-btn-primary:active,
 .neu-btn-guestel:active {
-  box-shadow: inset 2px 2px 6px rgba(0, 0, 0, 0.4), inset -2px -2px 6px rgba(255, 255, 255, 0.1);
+  box-shadow: inset 2px 2px 6px rgba(0, 0, 0, 0.4), inset -2px -2px 6px rgba(255, 255, 255, 0.1) !important;
   transform: translateY(2px);
 }
 
 /* Vibrant Blue Button */
 .neu-btn-blue,
 .neu-btn-guestel-blue {
-  background: #0073E6;
-  color: #ffffff;
-  box-shadow: 5px 5px 14px #cad3df, -5px -5px 14px #ffffff;
+  background: #0073E6 !important;
+  color: #ffffff !important;
+  box-shadow: 5px 5px 14px #cad3df, -5px -5px 14px #ffffff !important;
   transition: all 0.18s ease-in-out;
 }
 
 .neu-btn-blue:hover,
 .neu-btn-guestel-blue:hover {
-  background: #005bb5;
-  box-shadow: 2px 2px 8px #cad3df, -2px -2px 8px #ffffff;
+  background: #005bb5 !important;
+  box-shadow: 2px 2px 8px #cad3df, -2px -2px 8px #ffffff !important;
   transform: translateY(1px);
 }
 
 /* Input Fields */
 .neu-input {
-  background: #e8edf5;
-  box-shadow: inset 3px 3px 6px #cad3df, inset -3px -3px 6px #ffffff;
-  border: 1px solid rgba(203, 213, 225, 0.45);
-  color: #1e293b;
+  background: #e8edf5 !important;
+  box-shadow: inset 3px 3px 6px #cad3df, inset -3px -3px 6px #ffffff !important;
+  border: 1px solid rgba(203, 213, 225, 0.45) !important;
+  color: #1e293b !important;
   transition: all 0.2s ease;
 }
 
 .neu-input:focus {
-  outline: none;
-  box-shadow: inset 4px 4px 8px #cad3df, inset -4px -4px 8px #ffffff, 0 0 0 2px #0073E6;
+  outline: none !important;
+  box-shadow: inset 4px 4px 8px #cad3df, inset -4px -4px 8px #ffffff, 0 0 0 2px #0073E6 !important;
 }
 
 /* Pill Badges */
 .neu-pill {
-  background: #e8edf5;
-  box-shadow: 3px 3px 7px #cad3df, -3px -3px 7px #ffffff;
-  border: 1px solid rgba(255, 255, 255, 0.7);
+  background: #e8edf5 !important;
+  box-shadow: 3px 3px 7px #cad3df, -3px -3px 7px #ffffff !important;
+  border: 1px solid rgba(255, 255, 255, 0.7) !important;
 }
 
 .neu-pill-inset {
-  background: #e8edf5;
-  box-shadow: inset 2px 2px 4px #cad3df, inset -2px -2px 4px #ffffff;
+  background: #e8edf5 !important;
+  box-shadow: inset 2px 2px 4px #cad3df, inset -2px -2px 4px #ffffff !important;
+}
+
+/* =========================================================================
+   COMPREHENSIVE NEUMORPHIC OVERRIDE SYSTEM FOR ALL APPLICATION VIEWS
+   Guarantees no dark/cyberpunk panels remain anywhere.
+   ========================================================================= */
+
+/* Replace dark surface backgrounds with Neumorphic background */
+.bg-slate-900,
+.bg-slate-900\/60,
+.bg-slate-900\/80,
+.bg-slate-900\/90,
+.bg-slate-950,
+.bg-slate-950\/60,
+.bg-slate-950\/80,
+.bg-slate-950\/90 {
+  background-color: #e8edf5 !important;
+}
+
+/* Replace dark borders with soft neumorphic light seams */
+.border-slate-800,
+.border-slate-800\/80,
+.border-slate-800\/60,
+.border-slate-700,
+.border-slate-700\/80 {
+  border-color: rgba(202, 211, 223, 0.55) !important;
+}
+
+/* Soft Neumorphic dual shadows on cards */
+.backdrop-blur-xl,
+.backdrop-blur-md,
+.backdrop-blur {
+  background-color: #e8edf5 !important;
+  box-shadow: 8px 8px 18px #cad3df, -8px -8px 18px #ffffff !important;
+  border: 1px solid rgba(255, 255, 255, 0.75) !important;
+}
+
+/* Ensure headings and titles are crisp dark slate */
+h1.text-white,
+h2.text-white,
+h3.text-white,
+h4.text-white,
+p.text-white:not(.neu-btn-primary *):not(.neu-btn-blue *),
+a.text-white:not(.neu-btn-primary *):not(.neu-btn-blue *),
+span.text-white:not(.neu-btn-primary *):not(.neu-btn-blue *),
+div.text-white:not(.neu-btn-primary *):not(.neu-btn-blue *),
+td.text-white:not(.neu-btn-primary *):not(.neu-btn-blue *),
+th.text-white:not(.neu-btn-primary *):not(.neu-btn-blue *) {
+  color: #0f172a !important;
+}
+
+/* Subtitle and muted text readability */
+.text-slate-100 {
+  color: #1e293b !important;
+}
+
+.text-slate-200 {
+  color: #334155 !important;
+}
+
+.text-slate-300 {
+  color: #475569 !important;
+}
+
+.text-slate-400 {
+  color: #64748b !important;
+}
+
+/* Text on primary buttons must stay pure white */
+.neu-btn-primary,
+.neu-btn-blue,
+.neu-btn-guestel,
+.neu-btn-guestel-blue,
+.neu-btn-primary *,
+.neu-btn-blue * {
+  color: #ffffff !important;
+}
+
+/* Universal Inputs & Selects styled as tactile inset wells */
+input:not([type="checkbox"]):not([type="radio"]):not([type="submit"]):not([type="button"]),
+select,
+textarea {
+  background-color: #e8edf5 !important;
+  box-shadow: inset 3px 3px 6px #cad3df, inset -3px -3px 6px #ffffff !important;
+  color: #0f172a !important;
+  border: 1px solid rgba(203, 213, 225, 0.5) !important;
+}
+
+input:focus,
+select:focus,
+textarea:focus {
+  outline: none !important;
+  box-shadow: inset 3px 3px 6px #cad3df, inset -3px -3px 6px #ffffff, 0 0 0 2px #0073E6 !important;
 }
