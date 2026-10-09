@@ -1,0 +1,119 @@
+name: Deploy Guestel to Hostinger
+
+on:
+  push:
+    branches:
+      - main
+  workflow_dispatch:
+
+concurrency:
+  group: production-deploy
+  cancel-in-progress: false
+
+jobs:
+  build-and-test:
+    name: Build & Test
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: 🛎️ Checkout code
+        uses: actions/checkout@v4
+
+      - name: 🐘 Setup PHP 8.4
+        uses: shivammathur/setup-php@v2
+        with:
+          php-version: '8.4'
+          extensions: mbstring, xml, ctype, iconv, intl, pdo_sqlite, sqlite3, curl, fileinfo, zip, gd
+          coverage: none
+
+      - name: 📦 Install Composer dependencies
+        run: composer install --no-interaction --prefer-dist --optimize-autoloader
+
+      - name: ⚡ Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: 'npm'
+
+      - name: 📦 Install NPM dependencies
+        run: npm ci
+
+      - name: 🎨 Build Vite frontend assets
+        run: npm run build
+
+      - name: 🧪 Run Automated Tests
+        run: |
+          cp .env.example .env
+          php artisan key:generate
+          touch database/database.sqlite
+          php artisan migrate --force
+          php artisan test
+
+      - name: 📦 Archive built public assets
+        uses: actions/upload-artifact@v4
+        with:
+          name: public-build
+          path: public/build/
+          retention-days: 1
+
+  deploy:
+    name: Deploy to Hostinger
+    needs: build-and-test
+    runs-on: ubuntu-latest
+    if: github.ref == 'refs/heads/main'
+
+    steps:
+      - name: 🛎️ Checkout code
+        uses: actions/checkout@v4
+
+      - name: 🐘 Setup PHP 8.4
+        uses: shivammathur/setup-php@v2
+        with:
+          php-version: '8.4'
+          extensions: mbstring, xml, ctype, iconv, intl, pdo_sqlite, sqlite3, curl, fileinfo, zip, gd
+          coverage: none
+
+      - name: 📦 Install production Composer dependencies
+        run: composer install --no-dev --no-interaction --prefer-dist --optimize-autoloader
+
+      - name: 📥 Download compiled build assets
+        uses: actions/download-artifact@v4
+        with:
+          name: public-build
+          path: public/build/
+
+      - name: 📂 Deploy Core Platform via FTP
+        uses: SamKirkland/FTP-Deploy-Action@v4.3.5
+        with:
+          server: ${{ secrets.HOSTINGER_FTP_HOST || '82.112.229.48' }}
+          username: ${{ secrets.HOSTINGER_FTP_USER || 'u808446945' }}
+          password: ${{ secrets.HOSTINGER_FTP_PASSWORD }}
+          server-dir: /domains/optinetinnovations.in/hotel-guest-platform/
+          exclude: |
+            **/.git*
+            **/.git*/**
+            **/node_modules/**
+            **/tests/**
+            .env*
+            database/database.sqlite*
+            storage/logs/**
+            storage/framework/sessions/**
+
+      - name: 📂 Deploy Public Assets to Web Root
+        uses: SamKirkland/FTP-Deploy-Action@v4.3.5
+        with:
+          server: ${{ secrets.HOSTINGER_FTP_HOST || '82.112.229.48' }}
+          username: ${{ secrets.HOSTINGER_FTP_USER || 'u808446945' }}
+          password: ${{ secrets.HOSTINGER_FTP_PASSWORD }}
+          local-dir: ./public/
+          server-dir: /domains/optinetinnovations.in/public_html/guestel/
+          exclude: |
+            **/.git*
+            index.php
+            .htaccess
+
+      - name: 🩺 Verify Production Health Probe
+        run: |
+          echo "Pinging production health probe..."
+          curl --fail --retry 5 --retry-delay 5 -sS https://guestel.optinetinnovations.in/health
+          echo "Deployment successful and verified healthy!"
