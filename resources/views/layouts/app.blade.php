@@ -288,31 +288,6 @@
                         Switch ▾
                     </a>
                 </div>
-
-                <!-- ⚡ Quick Test Persona Switcher -->
-                <div class="hidden xl:flex items-center gap-1 neu-inset px-2.5 py-1 rounded-xl">
-                    <span class="text-[10px] font-bold text-slate-500 uppercase tracking-wider mr-1">Switch:</span>
-                    <form method="POST" action="{{ route('login.test') }}" class="inline">
-                        @csrf
-                        <input type="hidden" name="role" value="super_admin">
-                        <button type="submit" class="px-2 py-0.5 rounded-lg text-[10px] font-bold hover:bg-amber-100 text-amber-800 transition cursor-pointer">🏢 Super Admin</button>
-                    </form>
-                    <form method="POST" action="{{ route('login.test') }}" class="inline">
-                        @csrf
-                        <input type="hidden" name="role" value="hotel_admin">
-                        <button type="submit" class="px-2 py-0.5 rounded-lg text-[10px] font-bold hover:bg-blue-100 text-[#0073E6] transition cursor-pointer">🏨 Hotel GM</button>
-                    </form>
-                    <form method="POST" action="{{ route('login.test') }}" class="inline">
-                        @csrf
-                        <input type="hidden" name="role" value="housekeeping">
-                        <button type="submit" class="px-2 py-0.5 rounded-lg text-[10px] font-bold hover:bg-purple-100 text-purple-700 transition cursor-pointer">🧹 Housekeeping</button>
-                    </form>
-                    <form method="POST" action="{{ route('login.test') }}" class="inline">
-                        @csrf
-                        <input type="hidden" name="role" value="chef">
-                        <button type="submit" class="px-2 py-0.5 rounded-lg text-[10px] font-bold hover:bg-rose-100 text-rose-700 transition cursor-pointer">👨‍🍳 Chef</button>
-                    </form>
-                </div>
             </div>
 
             <!-- Right: Live Indicators, Audio alert toggle, & Clock -->
