@@ -214,4 +214,26 @@ class LandingAndRoleBasedAuthTest extends TestCase
 
         $response->assertForbidden();
     }
+
+    public function test_tc_auth_008_one_click_test_login_for_all_roles(): void
+    {
+        // 1. Super Admin
+        $resp1 = $this->post(route('login.test'), ['role' => 'super_admin']);
+        $resp1->assertRedirect(route('platform.dashboard'));
+        $this->assertAuthenticatedAs($this->companyAdmin);
+
+        // 2. Hotel Admin
+        $resp2 = $this->post(route('login.test'), ['role' => 'hotel_admin']);
+        $resp2->assertRedirect(route('admin.dashboard'));
+
+        // 3. Housekeeping
+        $resp3 = $this->post(route('login.test'), ['role' => 'housekeeping']);
+        $resp3->assertRedirect(route('admin.requests.index'));
+        $this->assertAuthenticatedAs($this->housekeeper);
+
+        // 4. Chef
+        $resp4 = $this->post(route('login.test'), ['role' => 'chef']);
+        $resp4->assertRedirect(route('admin.orders.index'));
+        $this->assertAuthenticatedAs($this->chef);
+    }
 }

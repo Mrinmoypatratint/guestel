@@ -57,6 +57,47 @@ class LoginController extends Controller
         return redirect()->intended($user->workspaceRoute());
     }
 
+    public function testLogin(Request $request)
+    {
+        $role = $request->input('role', 'hotel_admin');
+
+        $roleMap = [
+            'super_admin' => 'admin@example.com',
+            'hotel_admin' => 'admin@example.com',
+            'housekeeping' => 'maria.santos@grandazure.com',
+            'chef' => 'chef.marcus@grandazure.com',
+        ];
+
+        $email = $roleMap[$role] ?? 'admin@example.com';
+        $user = \App\Models\User::where('email', $email)->firstOrFail();
+
+        Auth::login($user);
+        $request->session()->regenerate();
+
+        if ($role === 'super_admin' || ($user->is_platform_admin && $role !== 'hotel_admin')) {
+            return redirect()->route('platform.dashboard');
+        }
+
+        $hotel = \App\Models\Hotel::first();
+        if ($hotel) {
+            $request->session()->put(config('hospitality.tenant_session_key', 'current_hotel_id'), $hotel->id);
+        }
+
+        if ($role === 'housekeeping') {
+            return redirect()->route('admin.requests.index');
+        }
+
+        if ($role === 'chef') {
+            $rest = \App\Models\Restaurant::first();
+            if ($rest) {
+                $request->session()->put('current_restaurant_id', $rest->id);
+            }
+            return redirect()->route('admin.orders.index');
+        }
+
+        return redirect()->route('admin.dashboard');
+    }
+
     public function destroy(Request $request)
     {
         Auth::logout();

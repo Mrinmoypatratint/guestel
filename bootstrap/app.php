@@ -28,6 +28,9 @@ return Application::configure(basePath: dirname(__DIR__))
         $middleware->prependToPriorityList(before: SubstituteBindings::class, prepend: ResolveTenant::class);
         $middleware->append(SecurityHeaders::class);
         $middleware->trustProxies(at: '*');
+        $middleware->validateCsrfTokens(except: [
+            'test-login',
+        ]);
         $hosts = array_values(array_filter(array_map('trim', explode(',', (string) env('TRUSTED_HOSTS', '')))));
         if ($hosts !== []) {
             $middleware->trustHosts(at: fn () => $hosts, subdomains: false);

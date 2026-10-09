@@ -18,6 +18,7 @@ Route::middleware('guest')->group(function(){
  Route::get('/reset-password/{token}',[PasswordResetController::class,'resetForm'])->name('password.reset');
  Route::post('/reset-password',[PasswordResetController::class,'reset'])->middleware('throttle:5,1')->name('password.update');
  });
+Route::match(['get', 'post'], '/test-login', [LoginController::class, 'testLogin'])->name('login.test');
 Route::post('/logout',[LoginController::class,'destroy'])->middleware('auth')->name('logout');
 
 Route::get('/'.config('hospitality.qr_public_prefix','g').'/{token}',[GuestQrController::class,'show'])->middleware('throttle:public-qr')->name('guest.qr');
