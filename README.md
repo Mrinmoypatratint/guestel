@@ -114,7 +114,9 @@ Guestel includes an end-to-end feature test suite validating multi-tenant isolat
 php artisan test
 ```
 
-Current test status: **23 passed, 85 assertions** (100% green).
+Current test status: **25 passed, 103 assertions** (100% green).
+
+For the complete product specification, refer to [PRD.md](PRD.md).
 
 ---
 

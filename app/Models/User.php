@@ -100,11 +100,20 @@ class User extends Authenticatable implements MustVerifyEmail
 
     public function primaryRole(?int $hotelId = null): ?Role
     {
-        if ($this->is_platform_admin) {
+        if ($this->is_platform_admin && $hotelId === null) {
             return new Role(['name' => 'SUPER_ADMIN', 'label' => 'Company Super Admin']);
         }
 
-        return $this->roles()->wherePivot('hotel_id', $hotelId)->first();
+        $hotelRole = $hotelId ? $this->roles()->wherePivot('hotel_id', $hotelId)->first() : null;
+        if ($hotelRole) {
+            return $hotelRole;
+        }
+
+        if ($this->is_platform_admin) {
+            return new Role(['name' => 'HOTEL_ADMIN', 'label' => 'Hotel Operations']);
+        }
+
+        return $this->roles()->first();
     }
 
     public function workspaceRoute(?int $hotelId = null): string

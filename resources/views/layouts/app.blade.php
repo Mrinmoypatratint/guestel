@@ -281,30 +281,11 @@
                         <span>{{ $currentHotel->name ?? 'Choose Property' }}</span>
                         <x-icon name="chevron-down" class="w-3.5 h-3.5 text-slate-500" />
                     </button>
-                    <span class="neu-pill-inset px-2.5 py-0.5 text-[10px] font-bold text-[#00214D]">
-                        {{ auth()->user()?->primaryRole($currentHotel->id ?? null)?->label ?? 'Staff' }}
-                    </span>
-                    <a href="{{ route('property.select') }}" class="text-[11px] text-[#0073E6] font-bold hover:underline transition ml-1" title="Switch Workspace">
-                        Switch ▾
-                    </a>
                 </div>
             </div>
 
             <!-- Right: Live Indicators, Audio alert toggle, & Clock -->
             <div class="flex items-center gap-3">
-                @if(auth()->user()?->is_platform_admin)
-                    @if(request()->routeIs('platform.*'))
-                    <a href="{{ route('admin.dashboard') }}" class="neu-button flex items-center gap-1.5 rounded-xl px-3 py-2 text-xs font-bold text-slate-800 transition">
-                        <x-icon name="dashboard" class="w-4 h-4 text-[#0073E6]" />
-                        <span class="hidden sm:inline">Operations Hub</span>
-                    </a>
-                    @else
-                    <a href="{{ route('platform.hotels.index') }}" class="neu-btn-primary flex items-center gap-1.5 rounded-xl px-3 py-2 text-xs font-bold text-white shadow-md transition">
-                        <x-icon name="shield" class="w-4 h-4 text-white" />
-                        <span class="hidden sm:inline">Platform Super Admin</span>
-                    </a>
-                    @endif
-                @endif
 
                 <!-- Audio Alert Toggle -->
                 <button @click="toggleAudio()" :class="audioEnabled ? 'neu-inset text-emerald-800 font-bold' : 'neu-button text-slate-600'" class="flex items-center gap-2 rounded-xl px-3 py-2 text-xs font-semibold transition" :title="audioEnabled ? 'Sound alerts active' : 'Sound alerts muted'">

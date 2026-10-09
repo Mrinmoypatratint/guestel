@@ -118,12 +118,6 @@
                                 <span>Housekeeping Dispatch</span>
                             </a>
 
-                            <a href="#security" 
-                               onclick="closeNavMenu()"
-                               class="flex items-center gap-3 px-3 py-2.5 rounded-xl hover:bg-white/60 text-slate-700 hover:text-slate-900 text-xs font-semibold transition">
-                                <span class="w-6 h-6 rounded-lg neu-inset-sm flex items-center justify-center text-xs">🔒</span>
-                                <span>Enterprise Security</span>
-                            </a>
                         </div>
 
                         <!-- Footer Links -->
@@ -553,47 +547,6 @@
             </div>
         </section>
 
-        <!-- 5. SECURITY & TRUST ARCHITECTURE -->
-        <section class="py-16 border-t border-slate-300" id="security">
-            <div class="max-w-7xl mx-auto px-6 sm:px-8 space-y-10">
-                <div class="text-center max-w-2xl mx-auto space-y-2">
-                    <span class="text-xs font-mono uppercase tracking-widest text-emerald-700 font-bold neu-pill px-3 py-1 rounded-full">Zero-Trust Standard</span>
-                    <h2 class="text-2xl sm:text-3xl font-extrabold text-slate-900">Multi-Tenant Isolation & Protection</h2>
-                </div>
-
-                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-                    <div class="neu-flat rounded-2xl p-6 space-y-2">
-                        <h4 class="text-sm font-bold text-slate-900 flex items-center gap-2">
-                            <span class="w-2 h-2 rounded-full bg-emerald-500"></span>
-                            Tenant Isolation
-                        </h4>
-                        <p class="text-xs text-slate-600 leading-relaxed">
-                            Strict global query scoping ensures no property or staff member can ever query or view records belonging to another hotel or restaurant.
-                        </p>
-                    </div>
-
-                    <div class="neu-flat rounded-2xl p-6 space-y-2">
-                        <h4 class="text-sm font-bold text-slate-900 flex items-center gap-2">
-                            <span class="w-2 h-2 rounded-full bg-emerald-500"></span>
-                            Server-Side Authorization
-                        </h4>
-                        <p class="text-xs text-slate-600 leading-relaxed">
-                            Every request checks User → Property → Role → Granular Permission. The frontend never dictates security privileges.
-                        </p>
-                    </div>
-
-                    <div class="neu-flat rounded-2xl p-6 space-y-2">
-                        <h4 class="text-sm font-bold text-slate-900 flex items-center gap-2">
-                            <span class="w-2 h-2 rounded-full bg-emerald-500"></span>
-                            IDOR Defense
-                        </h4>
-                        <p class="text-xs text-slate-600 leading-relaxed">
-                            Manipulating entity IDs in URLs or form submissions fails immediately with 403 Forbidden. Client inputs are never implicitly trusted.
-                        </p>
-                    </div>
-                </div>
-            </div>
-        </section>
     </main>
 
     <!-- FOOTER -->
